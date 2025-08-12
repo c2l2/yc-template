@@ -1,0 +1,10 @@
+- Author: 
+- Date first created: YYYYMMDD
+- Background: 簡述資料內容
+- Unit of observation:
+- Sample period:
+- Known issues:
+- Definition for each variable: 
+    - 
+    - 
+    - 
