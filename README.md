@@ -11,13 +11,4 @@ This is a research template for c2l2 team
 
 
 ## Repository Structure
-- `data/`: Directory for datasets used in the research
-    - `raw/`: raw data files, only used in data center
-    - `processed/`: processed data files, ready for analysis, only used in data center
-    - `external/`: external datasets or resources used in the research
-
-- `analysis/`: Data analysis and visualizations
-- `scripts/`: Scripts for data processing and pipeline
-- `results/`: Directory for storing results and outputs (e.g. tex files, images, etc.)
-- `docs/`: Documentation files related to the research
-- `README.md`: This file, providing an overview of the repository and instructions for use
+See [專案資料夾規範](https://docs.google.com/document/d/1sl6gEFMdmiGsiNjLe17UmZ30xKxq15U0Mb2B-Jvusxg/edit?usp=sharing).
