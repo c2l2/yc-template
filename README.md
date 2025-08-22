@@ -1,5 +1,5 @@
 # research-repo-template
-This is a template repository for c2l2 team (YC version)
+This is a template repository for c2l2 team (YC version).
 
 ## How to use this template
 1. Click on the "Use this template" button at the top right of the page.
