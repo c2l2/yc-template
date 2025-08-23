@@ -44,19 +44,11 @@ df = readr::read_csv(input_data_file)
 ### Sample
 
 ```{r}
-# ---- AUTO-TRANSLATED (conservative) ----
-# Original Python code for reference:
-# df.head(10)
-# ---- Draft R translation (please review) ----
 df.head(10)
 ```
 
 ### Summary Stats
 
 ```{r}
-# ---- AUTO-TRANSLATED (conservative) ----
-# Original Python code for reference:
-# df.describe()
-# ---- Draft R translation (please review) ----
 df |> summary()
 ```
