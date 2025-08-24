@@ -1,0 +1,3 @@
+[submodule "notebook-templates"]
+	path = notebook-templates
+	url = git@github.com:c2l2/yc-notebook-templates.git
