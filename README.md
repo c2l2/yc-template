@@ -14,3 +14,8 @@ See [專案資料夾規範](https://docs.google.com/document/d/1sl6gEFMdmiGsiNjL
 ## Link to Meeting Note 
 Link:
 Please create a Google Doc for meeting notes for each project. Please create a tab (named by date YYYYMMDD) for each meeting. [Meeting note template](https://docs.google.com/document/d/1vp1DItfbCN4shOsO1ZbVJf6z8bKySTxFDYsEbWRH10E/). We will create tickets based on the note after the meeting.
+
+## Notebook Templates
+`notebook-templates` contains the jupyter notebooks and R markdown examples for what you need to do in your research project folder.
+
+Please create a copy of the corresponding template for your `data`, `finding`, etc.
