@@ -17,5 +17,3 @@ Please create a Google Doc for meeting notes for each project. Please create a t
 
 ## Notebook Templates
 `notebook-templates` contains the jupyter notebooks and R markdown examples for what you need to do in your research project folder.
-
-Please create a copy of the corresponding template for your `data`, `finding`, etc.
