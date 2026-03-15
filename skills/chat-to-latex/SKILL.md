@@ -14,8 +14,7 @@ The goal is not just to rewrite notes in LaTeX syntax. The goal is to produce ma
 Inspect only the files needed for the task:
 
 - the most relevant LaTeX draft in `deliverable/paper/`
-- relevant Markdown notes in `references/`
-- relevant meeting-note or backlog context only when it materially affects framing
+- relevant meeting or research-log context only when it materially affects framing
 - any outline, section draft, or pasted text provided by the user
 
 Treat the LaTeX draft in `deliverable/paper/` as the primary anchor for notation, tone, structure, and local context.
