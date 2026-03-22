@@ -26,6 +26,7 @@ and easy for Codex to read.
 - `deliverable/paper/`: the main paper draft and related manuscript files.
 - `deliverable/slides/`: Beamer slides and presentation files.
 - `templates/`: notebook and analysis templates for new projects.
+- `yc-ai-assistant/`: shared AI workflow files and skills, tracked as a Git submodule.
 
 See [專案資料夾規範](https://docs.google.com/document/d/1sl6gEFMdmiGsiNjLe17UmZ30xKxq15U0Mb2B-Jvusxg/edit?usp=sharing).
 
@@ -55,7 +56,9 @@ Examples:
 research tasks in this repository.
 
 ## AI Template Updates
-This template includes the current research AI workflow files in the repo root.
+This template tracks the shared AI workflow in the `yc-ai-assistant/` submodule.
+The AI update commands also sync a path-adjusted root `AGENTS.md` so agent tools
+can discover the latest instructions from the repo root.
 
 For future updates from the shared AI template repo:
 

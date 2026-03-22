@@ -1,3 +1,7 @@
 [submodule "templates"]
 	path = templates
 	url = git@github.com:c2l2/yc-notebook-templates.git
+[submodule "yc-ai-assistant"]
+	path = yc-ai-assistant
+	url = https://github.com/c2l2/yc-ai-assistant.git
+	branch = main

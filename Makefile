@@ -1,27 +1,44 @@
-.PHONY: help templates update ai-template-setup ai-template-update
+.PHONY: help templates update ai-template-setup ai-template-update _ai-template-sync-agents
+
+AI_TEMPLATE_SUBMODULE := yc-ai-assistant
+AI_TEMPLATE_AGENTS_SRC := $(AI_TEMPLATE_SUBMODULE)/AGENTS.md
+AI_TEMPLATE_AGENTS_DST := AGENTS.md
 
 help:
 	@echo ""
 	@echo "Commands: "
 	@echo "---------"
-	@echo "- templates: pull the whole templates folder"
-	@echo "- update   : update the templates folder to latest version"
-	@echo "- ai-template-setup  : add/fetch the research-ai-template remote for future updates"
-	@echo "- ai-template-update : pull the latest research-ai-template files into repo root"
+	@echo "- templates         : initialize or refresh the templates submodule"
+	@echo "- update            : update the templates submodule to the recorded commit"
+	@echo "- ai-template-setup : initialize the yc-ai-assistant submodule and sync root AGENTS.md"
+	@echo "- ai-template-update: update the yc-ai-assistant submodule from main and sync root AGENTS.md"
 
 
 templates:
-	@git submodule update --init --recursive
+	@git submodule update --init --recursive templates
 
 
 update:
-	@git submodule update --recursive
+	@git submodule update --recursive templates
 
 
 ai-template-setup:
-	@git remote get-url ai-template >/dev/null 2>&1 || git remote add ai-template https://github.com/c2l2/research-ai-template.git
-	@git fetch ai-template
+	@git submodule update --init --recursive $(AI_TEMPLATE_SUBMODULE)
+	@$(MAKE) --no-print-directory _ai-template-sync-agents
 
 
-ai-template-update: ai-template-setup
-	@git subtree pull --prefix=. ai-template main --squash
+ai-template-update:
+	@git submodule update --init --remote --recursive $(AI_TEMPLATE_SUBMODULE)
+	@$(MAKE) --no-print-directory _ai-template-sync-agents
+
+
+_ai-template-sync-agents:
+	@test -f "$(AI_TEMPLATE_AGENTS_SRC)" || { echo "error: missing $(AI_TEMPLATE_AGENTS_SRC)" >&2; exit 1; }
+	@tmp_file=$$(mktemp); \
+	sed \
+		-e 's|`skills/`|`yc-ai-assistant/skills/`|g' \
+		-e 's|`BACKLOG.md`|`yc-ai-assistant/BACKLOG.md`|g' \
+		-e 's|`TASKS.md`|`yc-ai-assistant/TASKS.md`|g' \
+		-e 's|`SESSION.md`|`yc-ai-assistant/SESSION.md`|g' \
+		"$(AI_TEMPLATE_AGENTS_SRC)" > "$$tmp_file"; \
+	mv "$$tmp_file" "$(AI_TEMPLATE_AGENTS_DST)"

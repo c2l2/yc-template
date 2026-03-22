@@ -24,7 +24,7 @@ The repo is designed so that:
 ## Folder Meaning
 
 - `meeting-note.md`: running meeting log and project coordination memory
-- `BACKLOG.md`: important but not urgent items that should not be forgotten
+- `yc-ai-assistant/BACKLOG.md`: important but not urgent items that should not be forgotten
 - `references/`: paper PDFs and Markdown reading notes
 - `attachments/meetings/`: images for meeting notes
 - `attachments/references/`: images for reading notes
@@ -34,7 +34,7 @@ The repo is designed so that:
 - `deliverable/paper/`: main paper draft and manuscript files
 - `deliverable/slides/`: Beamer slides and presentation files
 - `templates/`: reusable templates
-- `skills/`: task-specific Codex skills
+- `yc-ai-assistant/skills/`: task-specific Codex skills
 
 ## Context Priority
 
@@ -54,6 +54,9 @@ Do not read broadly without need. Prefer targeted inspection.
 - Use relative links for Markdown images.
 - Keep paper-note images in `attachments/references/`.
 - Keep meeting-note images in `attachments/meetings/`.
+- Use `yc-ai-assistant/TASKS.md` as the queue for multi-step work that will be handled across
+  separate prompts.
+- Use `yc-ai-assistant/SESSION.md` as the active handoff note between Codex turns.
 - Use R by default for simulation work unless the project clearly uses another language.
 - Match notation to the existing LaTeX draft before adding manuscript text.
 - Only integrate current chat into `deliverable/paper/` when the user explicitly asks.
@@ -74,6 +77,9 @@ Use repo-local skills when the task matches them:
 - `simulation-runner`
 - `beamer-slides`
 - `chat-to-latex`
+- `chinese-referee-report`
+- `english-referee-report`
+- `letter-to-editor`
 
 Skills provide task-specific rules. This file provides global repo-level rules.
 
@@ -83,3 +89,25 @@ Skills provide task-specific rules. This file provides global repo-level rules.
 - Do not over-polish exploratory ideas into false certainty.
 - Be explicit about uncertainty, assumptions, and gaps.
 - Prefer concise, reusable outputs over long generic prose.
+
+## Sequential Prompt Protocol
+
+When the user wants Codex to work through a sequence of tasks using separate
+prompts, follow this protocol:
+
+1. Read `yc-ai-assistant/TASKS.md` and `yc-ai-assistant/SESSION.md` first if they exist and are relevant.
+2. Work on one scoped task at a time unless the user explicitly asks to batch.
+3. Update the task status in `yc-ai-assistant/TASKS.md` when a task starts or finishes.
+4. Leave a short handoff in `yc-ai-assistant/SESSION.md` with:
+   - current objective
+   - files changed or created
+   - decisions made
+   - unresolved blockers
+   - the single best next prompt for the next turn
+5. Prefer passing context through local files instead of relying on long chat history.
+
+This repo is optimized for prompt-chained work: plan in `yc-ai-assistant/TASKS.md`, execute one
+task per turn, and preserve continuity in `yc-ai-assistant/SESSION.md`.
+
+If the repo-local automation exists, it may invoke Codex through `make
+codex-task-next` or `make codex-task-resume` instead of manual prompt entry.
