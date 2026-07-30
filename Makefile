@@ -34,11 +34,4 @@ ai-template-update:
 
 _ai-template-sync-agents:
 	@test -f "$(AI_TEMPLATE_AGENTS_SRC)" || { echo "error: missing $(AI_TEMPLATE_AGENTS_SRC)" >&2; exit 1; }
-	@tmp_file=$$(mktemp); \
-	sed \
-		-e 's|`skills/`|`yc-ai-assistant/skills/`|g' \
-		-e 's|`BACKLOG.md`|`yc-ai-assistant/BACKLOG.md`|g' \
-		-e 's|`TASKS.md`|`yc-ai-assistant/TASKS.md`|g' \
-		-e 's|`SESSION.md`|`yc-ai-assistant/SESSION.md`|g' \
-		"$(AI_TEMPLATE_AGENTS_SRC)" > "$$tmp_file"; \
-	mv "$$tmp_file" "$(AI_TEMPLATE_AGENTS_DST)"
+	@cp "$(AI_TEMPLATE_AGENTS_SRC)" "$(AI_TEMPLATE_AGENTS_DST)"
